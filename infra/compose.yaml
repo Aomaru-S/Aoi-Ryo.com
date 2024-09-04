@@ -1,0 +1,11 @@
+services:
+  www:
+    build:
+      dockerfile: ./infra/www/Dockerfile
+      context: ..
+    ports:
+      - 80:80
+  app:
+    build:
+      dockerfile: ./infra/app/Dockerfile
+      context: ..
