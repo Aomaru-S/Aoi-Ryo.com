@@ -1,11 +1,32 @@
+name: aoiryo-com
+
 services:
   www:
     build:
       dockerfile: ./infra/www/Dockerfile
       context: ..
     ports:
-      - 80:80
+      - 443:443
+    depends_on:
+      - app
   app:
     build:
       dockerfile: ./infra/app/Dockerfile
       context: ..
+    depends_on:
+      - crontab
+  crontab:
+    build:
+      dockerfile: ./infra/crontab/Dockerfile
+      context: ..
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - certificate
+  certificate:
+    build:
+      dockerfile: ./infra/certificate/Dockerfile
+      context: ..
+    ports:
+      - 80:80
+    entrypoint: sleep infinity

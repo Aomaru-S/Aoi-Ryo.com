@@ -1,0 +1,8 @@
+[
+  {
+    "comment": "Renew certificate",
+    "schedule": "* * * */1 *",
+    "command": "docker exec infra-certificate-1 sh /scripts/renew.sh",
+    "onStart": true
+  }
+]
