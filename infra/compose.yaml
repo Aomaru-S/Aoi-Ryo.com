@@ -7,6 +7,8 @@ services:
       context: ..
     ports:
       - 443:443
+    volumes:
+      - certificate:/etc/letsencrypt
     depends_on:
       - app
   app:
@@ -29,4 +31,9 @@ services:
       context: ..
     ports:
       - 80:80
+    volumes:
+      - certificate:/etc/letsencrypt
     entrypoint: sleep infinity
+
+volumes:
+  certificate:

@@ -2,7 +2,7 @@
   {
     "comment": "Renew certificate",
     "schedule": "* * * */1 *",
-    "command": "docker exec infra-certificate-1 sh /scripts/renew.sh",
+    "command": "docker exec aoiryo-com-certificate-1 sh /scripts/certbot.sh && docker restart aoiryo-com-www-1",
     "onStart": true
   }
 ]
