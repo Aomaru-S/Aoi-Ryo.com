@@ -25,3 +25,6 @@ RUN echo \
     tee /etc/apt/sources.list.d/docker.list > /dev/null
 RUN apt-get update
 RUN apt-get install -y docker-ce-cli
+
+RUN apt-get install -y tzdata && \
+    ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
